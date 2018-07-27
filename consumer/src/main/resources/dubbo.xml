@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:config="https://crnlmchina.github.io/config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       https://crnlmchina.github.io/config
+       https://crnlmchina.github.io/config/config.xsd
+       ">
+
+    <dubbo:application name="DEMO_BOOT"/>
+    <dubbo:registry id="qingdaoRegistry" protocol="zookeeper"
+                    address="#{dubboGroup['dubbo.registry.address.690']}" timeout="60000"/>
+    <dubbo:protocol name="dubbo" port="-1"/>
+
+    <dubbo:reference id="helloService" interface="com.yunsheng.HelloService" version="1.0.0"
+                     registry="qingdaoRegistry"/>
+
+    <dubbo:service interface="com.yunsheng.HelloService" version="2.0.0"
+                   class="com.yunsheng.service.HelloServiceImpl"
+                   owner="yunsheng" registry="qingdaoRegistry" protocol="dubbo"/>
+
+
+</beans>
