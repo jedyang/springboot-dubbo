@@ -4,11 +4,13 @@ import com.github.pagehelper.PageInfo;
 import com.yunsheng.model.User;
 
 /**
- * Created by Administrator on 2018/4/19.
+ * @author yunsheng
  */
 public interface UserService {
 
     int addUser(User user);
+
+    int addUserRollBack(User user);
 
     PageInfo<User> findAllUser(int pageNum, int pageSize);
 }

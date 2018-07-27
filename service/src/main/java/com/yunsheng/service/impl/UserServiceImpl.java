@@ -8,6 +8,9 @@ import com.yunsheng.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,9 +24,23 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;//这里会报错，但是并不会影响
 
+    /**
+     * 演示事务效果
+     * userId设置了唯一
+     * @param user
+     * @return
+     */
     @Override
-    public int addUser(User user) {
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
+    public int addUserRollBack(User user) {
+        userMapper.insert(user);
+        userMapper.insert(user);
+        return 0;
+    }
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT,timeout=36000,rollbackFor=Exception.class)
+    public int addUser(User user) {
         return userMapper.insert(user);
     }
 
