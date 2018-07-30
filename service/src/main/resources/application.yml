@@ -1,3 +1,4 @@
+#使用.yml时，属性名的值和冒号中间必须有空格，如name: Isea533正确，name:Isea533就是错的
 server:
   port: 8080
 
@@ -12,9 +13,9 @@ spring:
           filters: stat
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
-          url: jdbc:mysql://10.138.26.200:3800/hop?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          username: hop_test
-          password: hoptest,123
+          url: ${config.datasource.url}
+          username: ${config.datasource.username}
+          password: ${config.datasource.password}
           #配置初始化大小/最小/最大
           initial-size: 1
           min-idle: 1

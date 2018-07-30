@@ -16,6 +16,7 @@
 
     <!-- 模块说明：这里声明多个子模块 -->
     <modules>
+        <module>parent</module>
         <module>provider</module>
         <module>consumer</module>
         <module>api</module>
@@ -39,34 +40,6 @@
     </properties>
 
 
-    <!-- 版本说明：这里统一管理依赖的版本号 -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.yunsheng</groupId>
-                <artifactId>api</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
 
-            <dependency>
-                <groupId>com.yunsheng</groupId>
-                <artifactId>service</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.dangdang</groupId>
-                <artifactId>config-toolkit</artifactId>
-                <version>3.3.2-RELEASE</version>
-            </dependency>
-
-            <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.6</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
 </project>
